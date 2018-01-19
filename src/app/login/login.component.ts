@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   public UserName:String;
   public Password:String;
+  public inputType:String='password';
 
   constructor(private http:HttpClient) { }
 
@@ -26,6 +27,18 @@ export class LoginComponent implements OnInit {
     console.log("UserName="+this.UserName+" Password="+this.Password );
     this.http.get("http://localhost:8080/user/namepassword/"+this.UserName+"/"+this.Password).subscribe(
       data=>console.log(data)
+
   );
+}
+
+hideShowPassword()
+{
+  if(this.inputType=='password')
+  {
+    this.inputType='text';
+  }
+  else{
+    this.inputType='password';
+  }
 }
 }

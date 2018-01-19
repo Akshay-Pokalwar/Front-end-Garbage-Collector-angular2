@@ -8,11 +8,12 @@
 
     <div class="form-group">
       <label for="alterEgo">Password</label>
-      <input type="text" class="form-control" name="password" [(ngModel)]="Password">
+      <input type="{{inputType}}" class="form-control" name="password" [(ngModel)]="Password">
+      <input type="checkbox" id="checkbox" [(ngModel)]="passwordCheckbox" (click)="hideShowPassword()" /> Show Password
     </div>
 
     <button  class="btn btn-success" (click)="login()">Login</button>
-    <button (click)="forgetPassword()" class="btn btn-link">Forget Password</button>
+    <button (click)="forgetPassword()" class="btn btn-link">Forgot Password?</button>
 
   </form>
   <div>

@@ -17,5 +17,5 @@ export class AppComponent implements OnInit{
 //     this.http.get('http://localhost:8080/products/1').subscribe(data=>{
 //     console.log(data);
 //      });
-//  }
+  }
 }
