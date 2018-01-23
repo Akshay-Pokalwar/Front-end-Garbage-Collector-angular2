@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
   /**
    * register
    */
-  public register() {
+  register() {
     var obj={"username":this.UserName,"password":this.Password,"email":this.Email,"city":this.City,
     "contactNo":this.ContactNo,"securityAns":this.SecurityAns}
     console.log(obj);
@@ -58,8 +58,11 @@ export class RegisterComponent implements OnInit {
   /**
    * login
    */
-  public login() {
+  login() {
     //get to login page
+    console.log("login");
+    var session=sessionStorage.getItem('username');
+    console.log(session);
   }
 
 }
