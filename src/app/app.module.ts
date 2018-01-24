@@ -14,8 +14,8 @@ import { VendorregisterComponent } from './vendorregister/vendorregister.compone
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register',      component: RegisterComponent },
-  { path: 'vendor-login', component: VendorLoginComponent },
-  { path: 'vendorregister',      component: VendorregisterComponent },
+  { path: 'vendorlogin', component: VendorLoginComponent },
+  { path: 'vendorregister', component: VendorregisterComponent },
   // {
   //   path: 'login',
   //   component: LoginComponent,

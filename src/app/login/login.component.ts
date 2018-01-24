@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
     //var usernamesession=JSON.stringify(this.dataRecieved.username);
     //sessionStorage.setItem(key,usernamesession);
     
-    var session=sessionStorage.getItem('username');
-    console.log(session);
+   // var session=sessionStorage.getItem('username');
+    //console.log(session);
   }
 
 

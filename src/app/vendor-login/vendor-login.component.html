@@ -1,3 +1,26 @@
-<p>
-  vendor-login works!
-</p>
+<div class="container">
+    <h1> Login Page!</h1>
+    <form>
+        <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+          {{message.text}}
+        </div>
+      <div class="form-group">
+        <label for="name">User Name</label>
+        <input type="text" class="form-control" name="username" required [(ngModel)]="UserName" placeholder="UserName">
+      </div>
+  
+      <div class="form-group">
+        <label for="alterEgo">Password</label>
+        <input type="{{inputType}}" class="form-control" name="password" [(ngModel)]="Password" placeholder="Password">
+        <input type="checkbox" id="checkbox" [(ngModel)]="passwordCheckbox" (click)="hideShowPassword()" /> Show Password
+      </div>
+      
+  
+      <button  class="btn btn-success" (click)="login()">Login</button>
+      <button (click)="forgetPassword()" class="btn btn-link">Forgot Password?</button>
+  
+    </form>
+    <div>
+      
+    </div>
+  </div>
