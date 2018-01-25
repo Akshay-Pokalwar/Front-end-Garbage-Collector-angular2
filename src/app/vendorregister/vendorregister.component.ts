@@ -19,25 +19,23 @@ export class VendorregisterComponent implements OnInit {
   private electronics=false;
   private garbage=false;
 
-  private plasticprice:any;
-  private electronicsprice:any;
-  private garbageprice:any;
+  private plasticprice:number;
+  private electronicsprice:number;
+  private garbageprice:number;
 
   private plasticid:any;
   private electronicsid:any;
   private garbageid:any;
 
-  public products:Array<any>;
-
+  public products:{}[]=[];
+  public productsArray:{id:number,price:number}[]=[];
   public inputType:String='password';
+  vendorSession:boolean=true;
   
   submitted = false;
-  onSubmit() { this.submitted = true; 
-  console.log("submit");
-  var obj={"username":this.UserName,"password":this.Password,"email":this.Email,"city":this.City,
-    "contactNo":this.ContactNo,"securityAns":this.SecurityAns}
-    console.log(JSON.stringify(obj));
-  }
+
+  constructor(private http:HttpClient) { }
+
 
   public hideShowPassword()
   {
@@ -50,80 +48,99 @@ export class VendorregisterComponent implements OnInit {
     }
   }
 
-  
-
-  constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    if(sessionStorage.getItem("vendorusername")!=null)
+    {
+      this.vendorSession=!this.vendorSession;
+    }
+  }
+
+  
+  setPlastic()
+  {
+    this.plastic=!this.plastic;
+    if(this.plasticid==undefined)
+    {
+      this.plasticid=1;  
+    }
+    else{
+      this.plasticid=undefined;
+    }
     
   }
 
-  register() {
-    var obj={"username":this.UserName,"password":this.Password,"email":this.Email,"city":this.City,
-    "contactNo":this.ContactNo,"securityAns":this.SecurityAns,
-    "products":[
-      {
-      "id":1,
-      price:this.plasticprice
-      },
-//this is to be done
-  ]
-  }
-    console.log(obj);
-    console.log(JSON.stringify(obj));
-    this.http.post("http://localhost:8080/user",obj).subscribe(
-      data=>console.log(data)
-    );
-
-  }
-
-  setPlastic()
-  {
-    //if(this.plastic)
-    this.plastic=!this.plastic;
-    this.plasticid=1;
-  }
-  unsetPlastic()
-  {
-    //if(this.plastic)
-    this.plasticid=0;
-  }
 
   setElectronics()
   {
     //if(this.plastic)
     this.electronics=!this.electronics;
-    this.electronicsid=2;
+    if(this.electronicsid==undefined)
+    {
+      //console.log("electronicsid=2");
+      this.electronicsid=2;
+    }
+    else{
+      this.electronicsid=undefined;
+    }
+    
   }
-  unsetElectronics()
-  {
-    //if(this.plastic)
-    this.electronicsid=0;
-  }
-
+ 
   setGarbage()
   {
     //if(this.plastic)
     this.garbage=!this.garbage;
-    this.garbageid=3;
+    if(this.garbageid==undefined)
+    {
+      //console.log("garbageid=3");
+      this.garbageid=3;
+    }
+    else
+    {
+      this.garbageid=undefined;
+    }
   }
 
-  unsetGarbage()
-  {
-    //if(this.plastic)
-    this.garbageid=0;
+
+  register() {
+    if(this.plasticid==1)
+    {
+      
+      this.productsArray.push({id:this.plasticid,price:this.plasticprice});
+      
+    }
+    if(this.electronicsid==2)
+    {
+      console.log("adding electronics"+this.electronicsid+""+this.electronicsprice);
+      this.productsArray.push({id:this.electronicsid,price:this.electronicsprice});
+      console.log("added");
+    }
+    if(this.garbageid==3)
+    {
+      console.log("adding garbage"+this.garbageprice+ " "+this.garbageid);
+      this.productsArray.push({id:this.garbageid,price:this.garbageprice});
+      console.log("added");
+    }
+    console.log("display productsArray");
+    console.log(this.productsArray);
+    this.products.push(this.productsArray);
+    console.log(this.products);
+    var obj={"username":this.UserName,"password":this.Password,"email":this.Email,"city":this.City,
+            "contactNo":this.ContactNo,"securityAns":this.SecurityAns,"products":this.productsArray
+              };
+
+    //console.log("obj "+obj);
+    console.log(JSON.stringify(obj));
+    // console.log(this.productsArray);
+    // this.products.push(this.productsArray);
+    // console.log(this.products);
+    this.http.post("http://localhost:8080/vendor",JSON.stringify(obj)).subscribe(
+      data=>console.log(data)
+    );
+
   }
 
-  setIntoArray()
-  {
-    this.products=[
-      {
 
-      "id":this.plasticid,
-      "price":this.plasticprice
-    },
-  ]
-  }
   login()
   {
 

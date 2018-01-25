@@ -41,10 +41,9 @@
     
     <div class="form-group">
         <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Register</button>
-        
       </div>
   </form>
-  <button (click)="login()" class="btn btn-link">Already Registered? Please Login!</button>
+  <button routerLink="/login" class="btn btn-link">Already Registered? Please Login!</button>
   <div>
     
   </div>

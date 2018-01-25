@@ -1,5 +1,5 @@
 <div class="container">
-    <h1> Login Page!</h1>
+    <h1>Vendor Login Page!</h1>
     <form>
         <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
           {{message.text}}
@@ -16,7 +16,7 @@
       </div>
       
   
-      <button  class="btn btn-success" (click)="login()">Login</button>
+      <button  class="btn btn-success" (click)="login()" >Login</button>
       <button (click)="forgetPassword()" class="btn btn-link">Forgot Password?</button>
   
     </form>

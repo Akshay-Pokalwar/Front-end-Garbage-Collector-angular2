@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   login()
   {
+    //sessionStorage.removeItem(this.key);
     console.log("UserName="+this.UserName+" Password="+this.Password );
     this.http.get("http://localhost:8080/user/namepassword/"+this.UserName+"/"+this.Password).subscribe(
       data=>
@@ -33,7 +34,12 @@ export class LoginComponent implements OnInit {
       
     
     );
-    //this.router.navigate(['./register'], {relativeTo: this.route});
+    console.log(sessionStorage.getItem(this.key));
+    if(sessionStorage.getItem(this.key)!=null)
+    {
+      this.router.navigate([''], {relativeTo: this.route});
+    }
+    
   
   }
 

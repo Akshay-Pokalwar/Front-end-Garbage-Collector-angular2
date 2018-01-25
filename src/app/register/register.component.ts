@@ -61,8 +61,9 @@ export class RegisterComponent implements OnInit {
   login() {
     //get to login page
     console.log("login");
-    var session=sessionStorage.getItem('username');
-    console.log(session);
+    //Route("/login",)
+    //var session=sessionStorage.getItem('username');
+    //console.log(session);
   }
 
 }

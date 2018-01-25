@@ -1,7 +1,7 @@
 
 <div class="container">
     <h1> Registration Page</h1>
-    <form (ngSubmit)="register()" #registerForm="ngForm">
+    <form (ngSubmit)="register()" #registerForm="ngForm" id="vendor">
       <div class="form-group">
         <label for="name">User Name</label>
         <input type="text" class="form-control" name="username" id="username" required [(ngModel)]="UserName" placeholder="UserName" pattern="[a-zA-Z][a-zA-Z ]+">
@@ -11,7 +11,6 @@
         <div [hidden]="!username.hasError('pattern')">Only alphabetsallowed</div>
      </div-->
       </div>
-  
       <div class="form-group">
         <label for="alterEgo">Password</label>
         <input type="{{inputType}}" class="form-control" name="password" required [(ngModel)]="Password" placeholder="Password">
@@ -37,29 +36,33 @@
         <input type="text" class="form-control" name="security_Ans" required [(ngModel)]="SecurityAns" placeholder="Answer">
       </div>
       Products which you can take?
-      <div>
-        
-          <input type="checkbox" id="checkbox1" (click)="setPlastic()" /> Plastic
-
-          <input type="text" [(ngModel)]="plasticprice" *ngIf="plastic" placeholder="Enter Price" (blur)="setIntoArray()">
+      
+      <div class="form-group">
+          
+          <input type="checkbox" id="checkbox1"  (click)="setPlastic()" /> Plastic
+          
+          <input type="text" class="form-control" name="plastic_price" [(ngModel)]="plasticprice" required *ngIf="plastic" placeholder="Enter Price" >
       </div>
-      <div>
+      <div class="form-group">
             <input type="checkbox" id="checkbox2" (click)="setElectronics()"  /> Electronics
-            <input type="text" [(ngModel)]="electronicsprice" *ngIf="electronics" placeholder="Enter Price" (blur)="setIntoArray()">
+            <input type="text" class="form-control" name="electronics_price" required [(ngModel)]="electronicsprice" *ngIf="electronics" placeholder="Enter Price" >
         </div>
-        <div>
+        {{electronicsprice}}
+        <div class="form-group">
               <input type="checkbox" id="checkbox3"  (click)="setGarbage()" /> Garbage
-              <input type="text" [(ngModel)]="garbageprice" *ngIf="garbage" placeholder="Enter Price" (blur)="setIntoArray()">
+              <input type="text" class="form-control"name="garbage_price" required [(ngModel)]="garbageprice" *ngIf="garbage" placeholder="Enter Price" >
           </div>
+          {{garbageprice}}
           <div>
 
           </div>
       <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Register</button>
+          <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid" (click)="setIntoArray()">Register</button>
           
         </div>
     </form>
-    <button (click)="login()" class="btn btn-link">Already Registered? Please Login!</button>
+    <button routerLink="/vendorlogin" class="btn btn-link" [disabled]="vendorSession">Already Registered? Please Login!</button>
+    
     <div>
       
     </div>
