@@ -26,6 +26,7 @@ export class VendorLoginComponent implements OnInit {
     private route: ActivatedRoute,private appcom:AppComponent  ) { }
 
   ngOnInit() {
+    //sessionStorage.setItem(this.key,null);
   }
 
   login()
@@ -37,16 +38,16 @@ export class VendorLoginComponent implements OnInit {
       
     
     );
-    //sessionStorage.setItem(this.key,data["UserName"]),
-    console.log(sessionStorage.getItem(this.key));
-    if(sessionStorage.getItem(this.key)!=null)
-    {
-      //this.appc.setStatus(false);
-      console.log(sessionStorage.getItem(this.key));
-      this.router.navigate(['./register'], {relativeTo: this.route});
-    }
-    console.log("outside"+sessionStorage.getItem(this.key));
-    //this.router.navigate(['./register'], {relativeTo: this.route});
+    //sessionStorage.setItem(this.key,null);
+    //console.log(sessionStorage.getItem(this.key));
+    // if(sessionStorage.getItem(this.key)!=null)
+    // {
+    //   //this.appc.setStatus(false);
+    //   console.log(sessionStorage.getItem(this.key));
+    //   this.router.navigate([''], {relativeTo: this.route});
+    // }
+    // console.log("outside"+sessionStorage.getItem(this.key));
+    // //this.router.navigate(['./register'], {relativeTo: this.route});
   
   }
 

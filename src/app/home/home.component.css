@@ -6,10 +6,10 @@
     padding: .4em 1.3em;
 }
 .color-dark {
-    background: #2885C4;
+    background: rgb(182, 212, 231);
 }
 .color-light {
-    background: #57B3F1;
+    background: rgb(236, 200, 200);
 }
 
 input.txt {

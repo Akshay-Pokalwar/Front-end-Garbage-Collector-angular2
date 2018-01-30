@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log(sessionStorage.getItem(this.key));
     if(sessionStorage.getItem(this.key)!=null)
     {
-      this.router.navigate([''], {relativeTo: this.route});
+      this.router.navigate(['/home'], {relativeTo: this.route});
     }
     
   

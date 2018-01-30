@@ -30,7 +30,7 @@ export class VendorregisterComponent implements OnInit {
   public products:{}[]=[];
   public productsArray:{id:number,price:number}[]=[];
   public inputType:String='password';
-  vendorSession:boolean=true;
+  vendorSession:boolean=false;
   
   submitted = false;
 
@@ -50,10 +50,11 @@ export class VendorregisterComponent implements OnInit {
 
 
   ngOnInit() {
-    if(sessionStorage.getItem("vendorusername")!=null)
-    {
-      this.vendorSession=!this.vendorSession;
-    }
+    sessionStorage.setItem("vendorusername",null);
+    // if(sessionStorage.getItem("vendorusername")!=null)
+    // {
+    //   this.vendorSession=!this.vendorSession;
+    // }
   }
 
   
@@ -134,7 +135,7 @@ export class VendorregisterComponent implements OnInit {
     // console.log(this.productsArray);
     // this.products.push(this.productsArray);
     // console.log(this.products);
-    this.http.post("http://localhost:8080/vendor",JSON.stringify(obj)).subscribe(
+    this.http.post("http://localhost:8080/vendor",obj).subscribe(
       data=>console.log(data)
     );
 
